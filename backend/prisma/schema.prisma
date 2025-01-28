@@ -14,10 +14,10 @@ datasource db {
 }
 
 model Customer {
-  id               Int      @id @default(autoincrement())
+  id               Int     @id @default(autoincrement())
   name             String
   url              String
-  validateContract DateTime
+  validateContract Boolean
 }
 
 model Site {
