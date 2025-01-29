@@ -1,4 +1,13 @@
-export default function CustomerForm() {
+interface CustomerFormProps {
+  handleInputChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  customerData: {
+    name: string;
+    url: string;
+    validateContract: boolean;
+  };
+}
+
+export default function CustomerForm({ handleInputChange, customerData }: CustomerFormProps) {
   return (
     <div className="mb-6 p-2 border-2 border-red-600">
       <h2 className="text-xl font-semibold text-gray-800 mb-4">Customer</h2>
@@ -11,6 +20,8 @@ export default function CustomerForm() {
             type="text"
             id="customer-name"
             name="customer[name]"
+            value={customerData.name}
+            onChange={handleInputChange}
             className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
             placeholder="Enter customer name"
           />
@@ -21,6 +32,8 @@ export default function CustomerForm() {
             type="url"
             id="customer-url"
             name="customer[url]"
+            value={customerData.url}
+            onChange={handleInputChange}
             className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
             placeholder="Enter customer URL"
           />
@@ -33,6 +46,8 @@ export default function CustomerForm() {
             type="checkbox"
             id="customer-validate-contract"
             name="customer[validateContract]"
+            checked={customerData.validateContract}
+            onChange={handleInputChange}
             className="mt-2 h-5 w-5 text-indigo-600 rounded focus:ring-indigo-500"
           />
         </div>

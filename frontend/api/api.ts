@@ -1,6 +1,10 @@
 const API_URL = 'http://localhost:3333';
 
-async (customerData: { name: string; email: string; password: string }) => {
+export const saveCustomerData = async (customerData: {
+  customer: { name: string; url: string; validateContract: boolean };
+  site: { name: string; cnpj: string; observation: string };
+  user: { email: string; cpf: string; dateExpiration: Date };
+}) => {
   try {
     const response = await fetch(`${API_URL}/customers`, {
       method: 'POST',

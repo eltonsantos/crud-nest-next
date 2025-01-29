@@ -17,9 +17,21 @@ export class CustomersController {
   create(
     @Body()
     customerData: {
-      name: string;
-      url: string;
-      validateContract: boolean;
+      customer: {
+        name: string;
+        url: string;
+        validateContract: boolean;
+      };
+      site: {
+        name: string;
+        cnpj: string;
+        observation: string;
+      };
+      user: {
+        email: string;
+        cpf: string;
+        dateExpiration: Date;
+      };
     },
   ) {
     return this.customersService.create(customerData);

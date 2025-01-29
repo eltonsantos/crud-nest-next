@@ -1,4 +1,13 @@
-export default function SiteForm() {
+interface SiteFormProps {
+  handleInputChange: (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
+  siteData: {
+    name: string;
+    cnpj: string;
+    observation: string;
+  };
+}
+
+export default function SiteForm({ handleInputChange, siteData }: SiteFormProps) {
   return (
     <div className="mb-6 p-2 border-2 border-green-600">
       <h2 className="text-xl font-semibold text-gray-800 mb-4">Site</h2>
@@ -11,6 +20,8 @@ export default function SiteForm() {
             type="text"
             id="site-name"
             name="site[name]"
+            value={siteData.name}
+            onChange={handleInputChange}
             className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
             placeholder="Enter site name"
           />
@@ -23,6 +34,8 @@ export default function SiteForm() {
             type="text"
             id="site-cnpj"
             name="site[cnpj]"
+            value={siteData.cnpj}
+            onChange={handleInputChange}
             className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
             placeholder="Enter site CNPJ"
           />
@@ -34,6 +47,8 @@ export default function SiteForm() {
           <textarea
             id="site-observation"
             name="site[observation]"
+            value={siteData.observation}
+            onChange={handleInputChange}
             className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
             placeholder="Add site observations"
           ></textarea>
